@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'datatable';
+  dtOptions: DataTables.Settings = {};
+
+  ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      responsive: true,
+      language: {
+        url: 'http://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
+      }
+    };
+  }
 }
