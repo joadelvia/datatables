@@ -14,7 +14,9 @@ export class AppComponent {
       pagingType: 'full_numbers',
       responsive: true,
       language: {
-        url: 'http://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
+        //Podemos utilizar el cdn o descargar el fichero y trabajar en local
+        // url: 'http://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
+        url: '/assets/es-ES.json'
       }
     };
   }
