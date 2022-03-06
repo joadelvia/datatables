@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Student } from './interface/student';
 import { map } from 'rxjs/operators'
+import { DataTableDirective } from 'angular-datatables';
 // import 'rxjs/add/operator/map';
 
 @Component({
@@ -10,6 +11,8 @@ import { map } from 'rxjs/operators'
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnDestroy, OnInit {
+  @ViewChild(DataTableDirective, {static: false})
+  dtElement!: DataTableDirective;
 
   dtOptions: DataTables.Settings = {};
   students: Student[] = [];
@@ -35,8 +38,44 @@ export class AppComponent implements OnDestroy, OnInit {
       .subscribe(data => {
         this.students = data;
         // Calling the DT trigger to manually render the table
+        this.dtTrigger.next(this.dtOptions);
+      });
+  }
+
+  changeList(){
+    this.students = [
+          {
+              "id": 1,
+              "nombre": "Domínguez Sánchez, Gema",
+              "email": "dominguez@email.com",
+              "nota": 7
+          },
+          {
+              "id": 2,
+              "nombre": "Pérez Gómez, Manuel",
+              "email": "perez@email.com",
+              "nota": 8
+          },
+          {
+              "id": 3,
+              "nombre": "López López, Sandra",
+              "email": "lopez@email.com",
+              "nota": 10
+          },
+          {
+              "id": 4,
+              "nombre": "Moreno Bonilla, Juan Manuel",
+              "email": "bonilla@email.com",
+              "nota": 4
+          }
+      ]
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        // Destroy the table first
+        dtInstance.destroy();
+        // Call the dtTrigger to rerender again
         this.dtTrigger.next(null);
       });
+  
   }
 
   ngOnDestroy(): void {
