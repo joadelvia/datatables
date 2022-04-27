@@ -1,0 +1,28 @@
+{
+    "alumnos": [
+        {
+            "id": 1,
+            "nombre": "Casado Blanco, Pablo",
+            "email": "casado@email.com",
+            "nota": 3
+        },
+        {
+            "id": 2,
+            "nombre": "Díaz Ayuso, Isabel",
+            "email": "ayuso@email.com",
+            "nota": 3
+        },
+        {
+            "id": 3,
+            "nombre": "Núñez Feijoo, Alberto",
+            "email": "feijoo@email.com",
+            "nota": 5
+        },
+        {
+            "id": 4,
+            "nombre": "Moreno Bonilla, Juan Manuel",
+            "email": "bonilla@email.com",
+            "nota": 4
+        }
+    ]
+}
