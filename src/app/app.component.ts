@@ -25,8 +25,10 @@ export class AppComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.dtOptions = {
+      order: [[1, 'asc']], //Nos permite indicar la ordenación, podemos poner tantos arrays de ordenación como queramos
+                            // cada array recibe 2 parámetros, el 1° es la columna (empieza por 0), el segundo es asc o dsc
       pagingType: 'full_numbers',
-      pageLength: 2,
+      pageLength: 10,
       responsive: true,
       language: {
         //Podemos utilizar el cdn o descargar el fichero y trabajar en local
@@ -75,7 +77,7 @@ export class AppComponent implements OnDestroy, OnInit {
         // Call the dtTrigger to rerender again
         this.dtTrigger.next(null);
       });
-  
+
   }
 
   ngOnDestroy(): void {
